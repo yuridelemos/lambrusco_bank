@@ -1,0 +1,15 @@
+C:\dev\LambruscoBank\bin\Debug\net6.0\LambruscoBank.exe
+C:\dev\LambruscoBank\bin\Debug\net6.0\LambruscoBank.deps.json
+C:\dev\LambruscoBank\bin\Debug\net6.0\LambruscoBank.runtimeconfig.json
+C:\dev\LambruscoBank\bin\Debug\net6.0\LambruscoBank.dll
+C:\dev\LambruscoBank\bin\Debug\net6.0\LambruscoBank.pdb
+C:\dev\LambruscoBank\obj\Debug\net6.0\LambruscoBank.csproj.AssemblyReference.cache
+C:\dev\LambruscoBank\obj\Debug\net6.0\LambruscoBank.GeneratedMSBuildEditorConfig.editorconfig
+C:\dev\LambruscoBank\obj\Debug\net6.0\LambruscoBank.AssemblyInfoInputs.cache
+C:\dev\LambruscoBank\obj\Debug\net6.0\LambruscoBank.AssemblyInfo.cs
+C:\dev\LambruscoBank\obj\Debug\net6.0\LambruscoBank.csproj.CoreCompileInputs.cache
+C:\dev\LambruscoBank\obj\Debug\net6.0\LambruscoBank.dll
+C:\dev\LambruscoBank\obj\Debug\net6.0\refint\LambruscoBank.dll
+C:\dev\LambruscoBank\obj\Debug\net6.0\LambruscoBank.pdb
+C:\dev\LambruscoBank\obj\Debug\net6.0\LambruscoBank.genruntimeconfig.cache
+C:\dev\LambruscoBank\obj\Debug\net6.0\ref\LambruscoBank.dll
