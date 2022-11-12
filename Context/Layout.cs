@@ -2,6 +2,7 @@ namespace LambruscoBank.Context
 {
   public class Layout
   {
+    public static List<Pessoa> pessoas = new List<Pessoa>();
     private static int Opcao = 0;
     public static void TelaPrincipal()
     {
@@ -47,6 +48,22 @@ namespace LambruscoBank.Context
       System.Console.Write("\t Digite a sua senha: ");
       string senha = Console.ReadLine();
       System.Console.WriteLine("\t==========================");
+
+      ContaCorrente contaCorrente = new ContaCorrente();
+      Pessoa pessoa = new Pessoa(nome, CPF, senha);
+
+      // pessoa.SetNome(nome);
+      // pessoa.SetCPF(nome);
+      // pessoa.SetSenha(nome);
+      pessoa.Conta = contaCorrente;
+
+      pessoas.Add(pessoa);
+
+      Console.Clear();
+
+      System.Console.WriteLine("\t============================");
+      System.Console.Write("\tConta Cadastrada com Sucesso ");
+      System.Console.WriteLine("\t============================");
     }
 
     private static void TelaLogin()
