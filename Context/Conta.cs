@@ -6,7 +6,7 @@ namespace LambruscoBank.Context
   {
     public Conta()
     {
-      NumeroConta = "0001";
+      NumeroAgencia = "0001";
       Conta.NumeroDaContaSequencial++;
     }
 

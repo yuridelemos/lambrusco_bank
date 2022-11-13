@@ -64,6 +64,9 @@ namespace LambruscoBank.Context
       System.Console.WriteLine("\t============================");
       System.Console.Write("\tConta Cadastrada com Sucesso ");
       System.Console.WriteLine("\t============================");
+
+      Thread.Sleep(2000);
+      TelaContaLogada(pessoa);
     }
 
     private static void TelaLogin()
@@ -75,6 +78,65 @@ namespace LambruscoBank.Context
       System.Console.Write("\t Digite a sua senha: ");
       string senha = Console.ReadLine();
       System.Console.WriteLine("\t==========================");
+
+      Pessoa pessoa = pessoas.FirstOrDefault(x => x.CPF == CPF && x.Senha == senha);
+      if (pessoa != null)
+      {
+        TelaBoasVindas(pessoa);
+        TelaContaLogada(pessoa);
+      }
+      else
+      {
+        Console.Clear();
+        System.Console.WriteLine("\t============================");
+        System.Console.Write("\t Pessoa nao cadastrada");
+        System.Console.WriteLine("\t============================");
+
+      }
+    }
+
+    private static void TelaBoasVindas(Pessoa pessoa)
+    {
+      string msgTelaBemVindo =
+      $"{pessoa.Nome} " +
+      $"| Banco: {pessoa.Conta.GetCodigoBanco()} " +
+      $"| Agencia: {pessoa.Conta.GetNumeroAgencia()}" +
+      $"| Conta: {pessoa.Conta.GetNumeroConta()}";
+      System.Console.WriteLine($"\n\tSeja bem-vindo, {msgTelaBemVindo}");
+    }
+
+    private static void TelaContaLogada(Pessoa pessoa)
+    {
+      Console.Clear();
+      TelaBoasVindas(pessoa);
+      System.Console.WriteLine("\t============================");
+      System.Console.WriteLine("\tDigite a Opcao desejada: ");
+      System.Console.WriteLine("\t1- Realizar um deposito");
+      System.Console.WriteLine("\t2- Realizar um saque");
+      System.Console.WriteLine("\t3- Consultar o saldo");
+      System.Console.WriteLine("\t4- Extrato");
+      System.Console.WriteLine("\t5- Sair");
+      System.Console.WriteLine("\t============================");
+
+      Opcao = int.Parse(Console.ReadLine());
+      switch (Opcao)
+      {
+        case 1:
+          break;
+        case 2:
+          break;
+        case 3:
+          break;
+        case 4:
+          break;
+        case 5:
+          TelaPrincipal();
+          break;
+        default:
+          Console.Clear();
+          System.Console.WriteLine("Opcao inválida");
+          break;
+      }
     }
   }
 }
