@@ -122,6 +122,7 @@ namespace LambruscoBank.Context
       switch (Opcao)
       {
         case 1:
+          TelaDeposito(pessoa);
           break;
         case 2:
           break;
@@ -137,6 +138,53 @@ namespace LambruscoBank.Context
           System.Console.WriteLine("Opcao inválida");
           break;
       }
+    }
+
+    private static void TelaDeposito(Pessoa pessoa)
+    {
+      Console.Clear();
+      TelaBoasVindas(pessoa);
+      Console.Write("\tDigite o valor do depósito: ");
+      double valor = double.Parse(Console.ReadLine());
+      System.Console.WriteLine("\t==========================");
+      pessoa.Conta.Depositar(valor);
+
+      TelaBoasVindas(pessoa);
+      System.Console.WriteLine("\n\n\n\tDepósito realizado com sucesso");
+
+      Thread.Sleep(1000);
+      OpcaoVoltarLogado(pessoa);
+    }
+    private static void OpcaoVoltarLogado(Pessoa pessoa)
+    {
+      System.Console.WriteLine("\tEntre com uma opção abaixo");
+      System.Console.WriteLine("\t==========================");
+      System.Console.WriteLine("\t1- Voltar para minha conta");
+      System.Console.WriteLine("\t==========================");
+      System.Console.WriteLine("\t2- Sair");
+      System.Console.WriteLine("\t==========================");
+      Opcao = int.Parse(System.Console.ReadLine());
+
+      if (Opcao == 1)
+        TelaContaLogada(pessoa);
+      else
+        TelaPrincipal();
+    }
+
+    private static void OpcaoVoltarDeslogado()
+    {
+      System.Console.WriteLine("\tEntre com uma opção abaixo");
+      System.Console.WriteLine("\t=============================");
+      System.Console.WriteLine("\t1- Voltar para menu principal");
+      System.Console.WriteLine("\t=============================");
+      System.Console.WriteLine("\t2- Sair");
+      System.Console.WriteLine("\t=============================");
+      Opcao = int.Parse(System.Console.ReadLine());
+
+      if (Opcao == 1)
+        TelaPrincipal();
+      else
+        Environment.Exit(0);
     }
   }
 }
