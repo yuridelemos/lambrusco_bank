@@ -1,3 +1,5 @@
+using LambruscoBank.Context;
+
 namespace LambruscoBank.Interface
 {
   public interface IConta
@@ -9,5 +11,6 @@ namespace LambruscoBank.Interface
     string GetNumeroAgencia();
     string GetNumeroConta();
 
+    List<Extrato> Extrato();
   }
 }

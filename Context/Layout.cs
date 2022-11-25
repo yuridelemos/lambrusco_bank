@@ -125,10 +125,13 @@ namespace LambruscoBank.Context
           TelaDeposito(pessoa);
           break;
         case 2:
+          TelaSaque(pessoa);
           break;
         case 3:
+          TelaSaldo(pessoa);
           break;
         case 4:
+          TelaExtrato(pessoa);
           break;
         case 5:
           TelaPrincipal();
@@ -152,7 +155,61 @@ namespace LambruscoBank.Context
       TelaBoasVindas(pessoa);
       System.Console.WriteLine("\n\n\n\tDepósito realizado com sucesso");
 
-      Thread.Sleep(1000);
+      Thread.Sleep(2000);
+      OpcaoVoltarLogado(pessoa);
+    }
+    private static void TelaSaque(Pessoa pessoa)
+    {
+      Console.Clear();
+      TelaBoasVindas(pessoa);
+      Console.Write("\tDigite o valor do Saque: ");
+      double valor = double.Parse(Console.ReadLine());
+      System.Console.WriteLine("\t==========================");
+      bool okSaque = pessoa.Conta.Sacar(valor);
+
+      TelaBoasVindas(pessoa);
+      if (okSaque)
+        System.Console.WriteLine("\n\n\n\tSaque realizado com sucesso");
+      else
+        System.Console.WriteLine("\n\n\n\tSaldo insuficiente");
+
+      Thread.Sleep(2000);
+      OpcaoVoltarLogado(pessoa);
+    }
+
+    private static void TelaSaldo(Pessoa pessoa)
+    {
+      Console.Clear();
+      TelaBoasVindas(pessoa);
+      System.Console.WriteLine($"\n\tSeu saldo é de {pessoa.Conta.ConsultaSaldo()}");
+      System.Console.WriteLine("\t==========================\n\n");
+
+      OpcaoVoltarLogado(pessoa);
+    }
+
+    private static void TelaExtrato(Pessoa pessoa)
+    {
+      Console.Clear();
+      TelaBoasVindas(pessoa);
+      if (pessoa.Conta.Extrato().Any())
+      {
+        double total = pessoa.Conta.Extrato().Sum(x => x.Valor);
+
+        foreach (Extrato extrato in pessoa.Conta.Extrato())
+        {
+          System.Console.WriteLine($"\n\tData: {extrato.Data.ToString("dd/MM/yyyy HH:mm:ss")}");
+          System.Console.WriteLine($"\n\tTipo de movimentação: {extrato.Descricao}");
+          System.Console.WriteLine($"\n\tValor: {extrato.Valor}");
+          System.Console.WriteLine("\t==========================");
+        }
+
+        System.Console.WriteLine("\n\tSub Total: R$ " + total);
+        System.Console.WriteLine("\t==========================");
+      }
+      else
+        System.Console.WriteLine("Não há extrato a ser exibido.");
+
+
       OpcaoVoltarLogado(pessoa);
     }
     private static void OpcaoVoltarLogado(Pessoa pessoa)
@@ -170,7 +227,6 @@ namespace LambruscoBank.Context
       else
         TelaPrincipal();
     }
-
     private static void OpcaoVoltarDeslogado()
     {
       System.Console.WriteLine("\tEntre com uma opção abaixo");
