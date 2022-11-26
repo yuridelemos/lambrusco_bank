@@ -13,9 +13,11 @@ namespace LambruscoBank.Context
 
       System.Console.WriteLine("\t Digite a opção desejada");
       System.Console.WriteLine("\t==========================");
-      System.Console.WriteLine("\t    1 - Criar Conta");
+      System.Console.WriteLine("\t1 - Criar Conta");
       System.Console.WriteLine("\t==========================");
       System.Console.WriteLine("\t2 - Entrar com CPF e Senha");
+      System.Console.WriteLine("\t==========================");
+      System.Console.WriteLine("\t3 - Sair");
       System.Console.WriteLine("\t==========================");
       System.Console.Write("\t Escolher opção desejada: ");
 
@@ -28,6 +30,9 @@ namespace LambruscoBank.Context
           break;
         case 2:
           TelaLogin();
+          break;
+        case 3:
+          Environment.Exit(0);
           break;
         default:
           System.Console.WriteLine("Opção inválida");
@@ -63,7 +68,7 @@ namespace LambruscoBank.Context
 
       System.Console.WriteLine("\t============================");
       System.Console.Write("\tConta Cadastrada com Sucesso ");
-      System.Console.WriteLine("\t============================");
+      System.Console.WriteLine("\n\t============================");
 
       Thread.Sleep(2000);
       TelaContaLogada(pessoa);
@@ -116,7 +121,7 @@ namespace LambruscoBank.Context
       System.Console.WriteLine("\t3- Consultar o saldo");
       System.Console.WriteLine("\t4- Extrato");
       System.Console.WriteLine("\t5- Sair");
-      System.Console.WriteLine("\t============================");
+      System.Console.Write("\t===========================: ");
 
       Opcao = int.Parse(Console.ReadLine());
       switch (Opcao)
@@ -152,8 +157,7 @@ namespace LambruscoBank.Context
       System.Console.WriteLine("\t==========================");
       pessoa.Conta.Depositar(valor);
 
-      TelaBoasVindas(pessoa);
-      System.Console.WriteLine("\n\n\n\tDepósito realizado com sucesso");
+      System.Console.WriteLine("\n\n\n\tDepósito realizado com sucesso\n\n");
 
       Thread.Sleep(2000);
       OpcaoVoltarLogado(pessoa);
@@ -162,16 +166,15 @@ namespace LambruscoBank.Context
     {
       Console.Clear();
       TelaBoasVindas(pessoa);
-      Console.Write("\tDigite o valor do Saque: ");
+      Console.Write("\n\tDigite o valor do Saque: ");
       double valor = double.Parse(Console.ReadLine());
       System.Console.WriteLine("\t==========================");
       bool okSaque = pessoa.Conta.Sacar(valor);
 
-      TelaBoasVindas(pessoa);
       if (okSaque)
-        System.Console.WriteLine("\n\n\n\tSaque realizado com sucesso");
+        System.Console.WriteLine("\n\tSaque realizado com sucesso\n");
       else
-        System.Console.WriteLine("\n\n\n\tSaldo insuficiente");
+        System.Console.WriteLine("\n\tSaldo insuficiente\n");
 
       Thread.Sleep(2000);
       OpcaoVoltarLogado(pessoa);
@@ -209,7 +212,6 @@ namespace LambruscoBank.Context
       else
         System.Console.WriteLine("Não há extrato a ser exibido.");
 
-
       OpcaoVoltarLogado(pessoa);
     }
     private static void OpcaoVoltarLogado(Pessoa pessoa)
@@ -219,7 +221,7 @@ namespace LambruscoBank.Context
       System.Console.WriteLine("\t1- Voltar para minha conta");
       System.Console.WriteLine("\t==========================");
       System.Console.WriteLine("\t2- Sair");
-      System.Console.WriteLine("\t==========================");
+      System.Console.Write("\t=========================: ");
       Opcao = int.Parse(System.Console.ReadLine());
 
       if (Opcao == 1)
